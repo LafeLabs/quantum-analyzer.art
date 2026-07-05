@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <!--
+spore
+   -->
+ <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9wAA7usAAFVRAAC7uwAA//cAAPrfAAD63wAA+t8AAPjfAAD7jwAA+98AAPvfAAD71wAA++8AAP//AAD//wAA" rel="icon" type="image/x-icon">
+   <title>quantum analyzer</title>    
+</head>
+<body>
+    <div id = "control-panel">
+        <div id ="room_temperature_switches">
+            <span class  = "button">out 1</span>
+            <span class  = "button">in 3</span>
+            <span class  = "button">in 1</span>
+            <span class  = "button">in 2</span>
+            <span class  = "button">in 4</span>
+            <span class  = "button">out 2</span>
+        </div>
+        <table id = "cryogenic_switches">
+            <tr>
+                <td>
+                    <canvas id ="left-output"></canvas>
+                </td>
+                <td id ="output_switch_1">
+                    <span class = "button">output</span>
+                    <span class = "button">sntj</span>
+                    <span class = "button">jpa</span>
+                    <span class = "button">short</span>
+                    <span class = "button">open</span>
+                    <span class = "button">load</span>
+                    <span class = "button">off</span>
+                </td>
+                <td>
+                    <canvas id ="left-coupler"></canvas>
+                </td>            
+                <td  id ="device_switch_pair">
+                    <span class = "button">thru</span>
+                    <span class = "button">reflect</span>
+                    <span class = "button">line</span>
+                    <span class = "button">qubit</span>
+                    <span class = "button">twpa</span>
+                    <span class = "button">coupler</span>
+                    <span class = "button">off</span>
+                </td>
+                <td>
+                    <canvas id ="right-coupler"></canvas>
+                </td>            
+                <td id ="output_switch_2">
+                    <span class = "button">output</span>
+                    <span class = "button">sntj</span>
+                    <span class = "button">jpa</span>
+                    <span class = "button">short</span>
+                    <span class = "button">open</span>
+                    <span class = "button">load</span>
+                    <span class = "button">off</span>
+                </td>
+                <td>
+                    <canvas id ="right-output"></canvas>
+                </td>
+        
+            </tr>
+        </table>
+
+    </div>
+    <textarea id = "json-input-output"></textarea>
+
+    <script>
+        instrument = {
+            "dilution_refrigerator": {
+                "make": "",
+                "model": "",
+                "purchase_date": "",
+                "photograph": "",
+                "location": "",
+                "thermometers": []
+            },
+            "network_analyzer": {
+                "make": "",
+                "model": "",
+                "start_frequency": 4000000000,
+                "stop_frequency": 8000000000,
+                "number_of_points": 1001,
+                "if_bandwidth": 10000,
+                "source_power": -30,
+                "source_on": true
+            },
+            "spectrum_analyzer": {
+                "make": "",
+                "model": "",
+                "start_frequency": 4000000000,
+                "stop_frequency": 8000000000,
+                "number_of_points": 1001,
+                "resolution_bandwidth": 1000000,
+                "video_bandwidth": 10000
+            },
+            "room_temperature_switches": {
+                "s": "11",
+                "spectrum_analyzer_mode": false
+            },
+            "programmable_attenuator": {
+                "value": -40
+            },
+            "cryogenic_switches": {
+                "output_switch_1": "open",
+                "output_switch_2": "open",
+                "device_switch_pair": "open"
+            },
+            "shot_noise_tunnel_junction": {
+                "voltage_bias":0.0
+            },
+            "josephson_parametric_amplifier": {
+                "pump_power": -50,
+                "pump_frequency": 13000000000,
+                "flux_bias": 0.65
+            },
+            "traveling_wave_parametric_amplifier": {
+                "pump_power": -50,
+                "pump_frequency": 13000000000
+            },
+            "waveguide_qubit": {
+                "flux_bias": 0.5
+            },
+            "calibration_standards": {
+                "ideal_standards": "ideal-standards.json",
+                "measured_standards": "measured-standards.json",
+                "shot_noise": "shot-noise.json",
+                "josephson_parametric_amplifier": "josephson-parametric-amplifier.json"
+            }
+        }
+
+document.getElementById("json-input-output").value = JSON.stringify(instrument,null, 4);
+        
+    </script>
+<style>
+canvas{
+    display:none;
+}
+body{
+    font-family:arial;
+}
+div{
+}
+.button{
+    cursor:pointer;
+    border:solid;
+    padding:5px 5px 5px 5px;
+    border-radius:5px;
+    margin:5px 5px 5px 5px;
+    text-align:center;
+}
+.button:hover{
+    background-color:yellow;
+}
+.button:active{
+    background-color:green;
+}
+td .button{
+    display:block;
+}
+#room_temperature_switches{
+    margin-bottom:1em;
+    margin-top:1em;
+    
+}
+#json-input-output{
+    position:absolute;
+    right:1%;
+    top:1%;
+    width:48%;
+    bottom:1%;
+}
+#control-panel{
+    position:absolute;
+    left:1%;
+    top:1%;
+    width:48%;
+    bottom:1%;
+}
+</style>
+</body>
+</html>
