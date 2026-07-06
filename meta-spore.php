@@ -1,8 +1,6 @@
-<?php
-$spore = "https://quantum-analyzer.art/quantum-analyzer-spore.php";
-$baseurl = explode("quantum-analyzer-spore.php",$spore)[0];
-
-$fileNames = [
+<a href = "index.html">index.html</a>
+<pre>
+[
     "README.md",
     "delete-file.php",
     "editor.html",
@@ -24,22 +22,5 @@ $fileNames = [
     "save-file.php",
     "sketch.js",
     "wall.txt"
-];
-
-foreach ($fileNames as $fileName) {
-    @copy($baseurl.$fileName,$fileName);
-}
-
-
-?>
-<a href = "index.html">index.html</a>
-<style>
-body{
-    font-size:3em;
-    font-family:arial;
-}
-a{
-    font-size:3em;
-    color:blue;
-}
-</style>
+]    
+</pre>

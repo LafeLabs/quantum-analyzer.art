@@ -1,8 +1,1 @@
-<?php
-
-    $directoryName = isset($_GET["directory"]) ? basename($_GET["directory"]) : '';
-    $targetPath = getcwd() . '/' . $directoryName;
-    $files = array_diff(scandir($targetPath), ['.', '..']);
-    echo json_encode(array_values($files));
-
-?>
+[".htaccess",".user.ini",".well-known","README.md","delete-file.php","editor.html","fork.php","geometron","geometron-glyph-1783271187.svg","geometron-glyph-1783271548.svg","geometron-glyph-1783271580.svg","geometron-glyph-1783271597.svg","geometron-glyph-1783282826.svg","geometron-glyph-1783282853.svg","geometron-glyph-1783283168.svg","geometron-glyph-1783283218.svg","geometron-glyph-1783283268.svg","geometron-glyph-feed.html","geometron.css","geometron.html","geometron.js","hypercube.json","index.html","instrument.html","list-directories.php","list-files.php","load-file.php","meta-spore.php","quantum-analyzer-spore.php","readme.html","save-file-get.php","save-file.php","sketch.js","spore","wall.txt"]

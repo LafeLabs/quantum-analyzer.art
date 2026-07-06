@@ -6,23 +6,95 @@
 spore
    -->
  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9wAA7usAAFVRAAC7uwAA//cAAPrfAAD63wAA+t8AAPjfAAD7jwAA+98AAPvfAAD71wAA++8AAP//AAD//wAA" rel="icon" type="image/x-icon">
-   <title>quantum analyzer</title>    
+   <title>quantum analyzer</title>
+   <script src = "geometron.js"></script>
 </head>
 <body>
     <div id = "control-panel">
+        <h1>Quantum Analyzer</h1>
+        <table>
+            <tr>
+                <td>vector network analyzer source_on:</td>
+                <td>
+                    <input>
+                </td>
+                <td>boolean</td>
+            </tr>
+
+            <tr>
+                <td>vector network analyzer source power:</td>
+                <td>
+                    <input>
+                </td>
+                <td>dBm</td>
+            </tr>
+
+            <tr>
+                <td>vector network analyzer IF bandwidth:</td>
+                <td>
+                    <input>
+                </td>
+                <td>Hz</td>
+            </tr>
+
+            <tr>
+                <td>spectrum analyzer resolution bandwidth:</td>
+                <td>
+                    <input>
+                </td>
+                <td>Hz</td>
+            </tr>
+            <tr>
+                <td>spectrum analyzer video bandwidth:</td>
+                <td>
+                    <input>
+                </td>
+                <td>Hz</td>
+            </tr>
+
+            <tr>
+                <td>start frequency:</td>
+                <td>
+                    <input>
+                </td>
+                <td>Hz</td>
+            </tr>
+            <tr>
+                <td>stop frequency:</td>
+                <td>
+                    <input>
+                </td>
+                <td>Hz</td>
+            </tr>
+            <tr>
+                <td>number of points:</td>
+                <td>
+                    <input>
+                </td>
+            </tr>
+            <tr>
+                <td>programmable attenuator:</td>
+                <td>
+                    <input>
+                </td>
+                <td>dB</td>
+            </tr>
+        </table>
         <div id ="room_temperature_switches">
-            <span class  = "button">out 1</span>
-            <span class  = "button">in 3</span>
-            <span class  = "button">in 1</span>
-            <span class  = "button">in 2</span>
-            <span class  = "button">in 4</span>
-            <span class  = "button">out 2</span>
+            <span style = "margin-left:6em;padding-top:1em;padding:1em 1em 1em 1em" class = "button">vector_network_analyzer</span>
+            <span style= "padding:1em 1em 1em 1em" class = "button">spectrum_analzyer</span>
+            <br>
+            <canvas id = "room-temperature-switches-canvas"></canvas>
+            <br>
+            <span style = "margin-left:0.5em" class  = "button">out_1</span>
+            <span style = "margin-left:1.2em" class  = "button">in_3</span>
+            <span class  = "button">in_1</span>
+            <span class  = "button">in_2</span>
+            <span class  = "button">in_4</span>
+            <span class  = "button">out_2</span><br>
         </div>
         <table id = "cryogenic_switches">
             <tr>
-                <td>
-                    <canvas id ="left-output"></canvas>
-                </td>
                 <td id ="output_switch_1">
                     <span class = "button">output</span>
                     <span class = "button">sntj</span>
@@ -30,7 +102,9 @@ spore
                     <span class = "button">short</span>
                     <span class = "button">open</span>
                     <span class = "button">load</span>
-                    <span class = "button">off</span>
+                    <span class = "button">internal_short</span>
+                    <span class = "button">internal_open</span>
+                    <span class = "button">internal_load</span>
                 </td>
                 <td>
                     <canvas id ="left-coupler"></canvas>
@@ -42,7 +116,9 @@ spore
                     <span class = "button">qubit</span>
                     <span class = "button">twpa</span>
                     <span class = "button">coupler</span>
-                    <span class = "button">off</span>
+                    <span class = "button">internal_short</span>
+                    <span class = "button">internal_open</span>
+                    <span class = "button">internal_load</span>
                 </td>
                 <td>
                     <canvas id ="right-coupler"></canvas>
@@ -54,15 +130,79 @@ spore
                     <span class = "button">short</span>
                     <span class = "button">open</span>
                     <span class = "button">load</span>
-                    <span class = "button">off</span>
+                    <span class = "button">internal_short</span>
+                    <span class = "button">internal_open</span>
+                    <span class = "button">internal_load</span>
                 </td>
-                <td>
-                    <canvas id ="right-output"></canvas>
-                </td>
-        
             </tr>
         </table>
+        <table>
+            <tr>
+                <td>JPA pump on:</td>
+                <td>
+                    <input>
+                </td>
+                <td>boolean</td>
+            </tr>
+            <tr>
+                <td>JPA pump power:</td>
+                <td>
+                    <input>
+                </td>
+                <td>dBm</td>
+            </tr>
+            <tr>
+                <td>JPA pump frequency:</td>
+                <td>
+                    <input>
+                </td>
+                <td>Hz</td>
+            </tr>
+            <tr>
+                <td>JPA flux biax:</td>
+                <td>
+                    <input>
+                </td>
+                <td>flux quanta</td>
+            </tr>
 
+            <tr>
+                <td>TWPA pump on:</td>
+                <td>
+                    <input>
+                </td>
+                <td>boolean</td>
+            </tr>
+            <tr>
+                <td>TWPA pump power:</td>
+                <td>
+                    <input>
+                </td>
+                <td>dBm</td>
+            </tr>
+            <tr>
+                <td>TWPA pump frequency:</td>
+                <td>
+                    <input>
+                </td>
+                <td>Hz</td>
+            </tr>
+            <tr>
+                <td>shot noise tunnel junction voltage bias:</td>
+                <td>
+                    <input>
+                </td>
+                <td>V</td>
+            </tr>
+            <tr>
+                <td>waveguide qubit flux bias:</td>
+                <td>
+                    <input>
+                </td>
+                <td>flux quanta</td>
+            </tr>
+            
+        </table>
     </div>
     <textarea id = "json-input-output"></textarea>
 
@@ -132,15 +272,58 @@ spore
 
 document.getElementById("json-input-output").value = JSON.stringify(instrument,null, 4);
         
+    leftCouplerGVM = new GVM();
+    rightCouplerGVM = new GVM();
+    roomTemperatureSwitchesGVM = new GVM();
+    
+    fetch('load-file.php?filename=hypercube.json')
+        .then(xhr => xhr.text())
+        .then(rawJSON => {
+            leftCouplerGVM.canvas.width = 100; 
+            leftCouplerGVM.canvas.height = 400;
+            leftCouplerGVM.canvas.x0 = 0.5 * leftCouplerGVM.canvas.width; 
+            leftCouplerGVM.canvas.y0 = 0.4 * leftCouplerGVM.canvas.height;
+            leftCouplerGVM.canvas.unit = 0.15 * leftCouplerGVM.canvas.width;
+            leftCouplerGVM.style.line0 = 2;
+            leftCouplerGVM.hypercube = JSON.parse(rawJSON);
+            leftCouplerGVM.glyph = leftCouplerGVM.hypercube[0o221];
+            drawGlyph(document.getElementById("left-coupler"), leftCouplerGVM);
+            
+            rightCouplerGVM.canvas.width = leftCouplerGVM.canvas.width; 
+            rightCouplerGVM.canvas.height = leftCouplerGVM.canvas.height;
+            rightCouplerGVM.canvas.x0 = leftCouplerGVM.canvas.x0; 
+            rightCouplerGVM.canvas.y0 = leftCouplerGVM.canvas.y0
+            rightCouplerGVM.canvas.unit = leftCouplerGVM.canvas.unit;
+            rightCouplerGVM.style.line0 = 2;
+            rightCouplerGVM.hypercube = JSON.parse(rawJSON);
+            rightCouplerGVM.glyph = leftCouplerGVM.hypercube[0o222];
+            drawGlyph(document.getElementById("right-coupler"), rightCouplerGVM);
+
+            roomTemperatureSwitchesGVM.canvas.width = 400;
+            roomTemperatureSwitchesGVM.canvas.height = 360;
+            roomTemperatureSwitchesGVM.canvas.x0 = 200;
+            roomTemperatureSwitchesGVM.canvas.y0 = 180;
+            roomTemperatureSwitchesGVM.canvas.unit= 100;
+            roomTemperatureSwitchesGVM.style.line0 = 2;
+            roomTemperatureSwitchesGVM.hypercube = JSON.parse(rawJSON);
+            roomTemperatureSwitchesGVM.glyph = roomTemperatureSwitchesGVM.hypercube[0o224];
+            drawGlyph(document.getElementById("room-temperature-switches-canvas"),roomTemperatureSwitchesGVM);
+    });
+
+    
     </script>
 <style>
 canvas{
-    display:none;
 }
 body{
     font-family:arial;
+    overflow:hidden;
 }
 div{
+}
+input{
+    border:solid;
+
 }
 .button{
     cursor:pointer;
@@ -160,9 +343,9 @@ td .button{
     display:block;
 }
 #room_temperature_switches{
+    margin-top:2em;
     margin-bottom:1em;
-    margin-top:1em;
-    
+    margin-left:4em;
 }
 #json-input-output{
     position:absolute;
@@ -175,8 +358,13 @@ td .button{
     position:absolute;
     left:1%;
     top:1%;
+    overflow:scroll;
     width:48%;
     bottom:1%;
+}
+#room-temperature-switches-canvas{
+    margin-top:1em;
+    margin-bottom:1em;
 }
 </style>
 </body>
