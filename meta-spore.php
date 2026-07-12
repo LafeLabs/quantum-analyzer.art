@@ -1,16 +1,27 @@
-<a href = "index.html">index.html</a>
+<!-- 
+this program generates the file dna.txt which lists the files to replicate 
+-->
+<a style ="font-family:Arial;color:blue;font-size:1.5em;" href = "index.html">index.html</a>
+<br>
+<br>
 <pre>
 [
     "README.md",
+    "delete-branch.php",
     "delete-file.php",
     "editor.html",
+    "foo.php",
     "fork.php",
     "geometron-glyph-feed.html",
+    "geometron-spore.php",
     "geometron.css",
     "geometron.html",
     "geometron.js",
+    "geometron.json",
     "hypercube.json",
     "index.html",
+    "instrument-sketch.js",
+    "instrument.css",
     "instrument.html",
     "list-directories.php",
     "list-files.php",
@@ -18,9 +29,13 @@
     "meta-spore.php",
     "quantum-analyzer-spore.php",
     "readme.html",
+    "rename-file.php",
     "save-file-get.php",
     "save-file.php",
     "sketch.js",
-    "wall.txt"
-]    
-</pre>
+    "spore.json",
+    "spore.php",
+    "wall.txt",
+    "weird.php"
+]</pre>
+<br>

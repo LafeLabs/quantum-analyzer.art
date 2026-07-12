@@ -1,11 +1,11 @@
-<a href = "spore/index.html">spore/index.html</a>
+<a href="fork/index.html">fork/index.html</a>
 <style>
-body{
-    font-size:3em;
-    font-family:arial;
+body {
+    font-size: 3em;
+    font-family: arial;
 }
-a{
-    font-size:3em;
-    color:blue;
+a {
+    font-size: 3em;
+    color: blue;
 }
 </style>

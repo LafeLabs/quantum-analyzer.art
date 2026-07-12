@@ -1,9 +1,14 @@
 <?php
-$spore = "https://quantum-analyzer.art/spore.php";
-$baseurl = explode("spore.php",$spore)[0];
+$sporeUrl = "https://quantum-analyzer.art/spore.json";
 
-@copy($baseurl."index.html","index.html");
-@copy($baseurl."README.md","README.md");
+$baseUrl = explode("spore.json",$sporeUrl)[0];
+
+$files = json_decode(file_get_contents($sporeUrl), true);
+
+foreach ($files as $file) {
+    @copy($baseUrl.$file,$file);
+}
+
 
 ?>
 <a href = "index.html">index.html</a>
