@@ -1,1 +1,8 @@
-[".htaccess",".user.ini",".well-known","README.md","control-panel","delete-branch.php","delete-file.php","editor.html","foo.php","fork","fork.php","geometron","geometron-glyph-1783271187.svg","geometron-glyph-1783271548.svg","geometron-glyph-1783271580.svg","geometron-glyph-1783271597.svg","geometron-glyph-1783282826.svg","geometron-glyph-1783282853.svg","geometron-glyph-1783283168.svg","geometron-glyph-1783283218.svg","geometron-glyph-1783283268.svg","geometron-glyph-1783731493.svg","geometron-glyph-1783732086.svg","geometron-glyph-1783732261.svg","geometron-glyph-1783793674.svg","geometron-glyph-1783793761.svg","geometron-glyph-1783793889.svg","geometron-glyph-1783793923.svg","geometron-glyph-1783793956.svg","geometron-glyph-1783794025.svg","geometron-glyph-1783805429.svg","geometron-glyph-1783807089.svg","geometron-glyph-1783808036.svg","geometron-glyph-1783808248.svg","geometron-glyph-1783808316.svg","geometron-glyph-feed.html","geometron-spore.php","geometron.css","geometron.html","geometron.js","geometron.json","hypercube.json","index.html","instrument-sketch.js","instrument.css","instrument.html","list-directories.php","list-files.php","load-file.php","meta-spore.php","quantum-analyzer-spore.php","readme.html","rename-file.php","save-file-get.php","save-file.php","sketch.js","spore","spore.json","spore.php","wall.txt","warm-rf-network","weird.php"]
+<?php
+
+    $directoryName = isset($_GET["directory"]) ? basename($_GET["directory"]) : '';
+    $targetPath = getcwd() . '/' . $directoryName;
+    $files = array_diff(scandir($targetPath), ['.', '..']);
+    echo json_encode(array_values($files));
+
+?>
