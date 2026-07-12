@@ -1,5 +1,5 @@
 <?php
-$sporeUrl = "https://quantum-analyzer.art/spore.json";
+$sporeUrl = "https://raw.githubusercontent.com/LafeLabs/quantum-analyzer.art/refs/heads/main/spore.json";
 
 $baseUrl = explode("spore.json",$sporeUrl)[0];
 
