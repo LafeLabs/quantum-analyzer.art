@@ -1,6 +1,6 @@
 function setup() {
-
- let container = document.getElementById('p5-canvas-container');
+     
+    let container = document.getElementById('p5-canvas-container');
     
     let w = container.clientWidth;
     let h = container.clientHeight;
@@ -17,8 +17,7 @@ function setup() {
 }
 
 function draw() {
-  clear();
-/*
+    clear();
     stroke(0);
     strokeWeight(1);
     line(x0,0,x0,height);
@@ -27,8 +26,11 @@ function draw() {
     line(0,mouseY,width,mouseY);
 
     strokeWeight(5);
-    thetaX = map(mouseX,0,width,-Math.PI,Math.PI);
-    thetaY = map(mouseY,0,height,-Math.PI,Math.PI);
+    if(mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+        thetaX = map(mouseX,0,width,-Math.PI,Math.PI);
+        thetaY = map(mouseY,0,height,-Math.PI,Math.PI);
+        
+    }
     
     thetaX = Math.round(thetaX / (2*Math.PI / 64)) * (2*Math.PI /64);
     thetaY = Math.round(thetaY / (2*Math.PI / 64)) * (2*Math.PI /64);
@@ -50,8 +52,7 @@ function draw() {
     line(x0 + 2*unit,y0,x0 + 2*unit + unit*Math.sin(2*thetaZ),y0 + unit*Math.cos(2*thetaZ));
     circle(x0 + 2*unit,y0,unit/10);
     circle(x0 + 2*unit + unit*Math.sin(2*thetaZ),y0 + unit*Math.cos(2*thetaZ),unit/10);    
-    */
-    
+
     
 }
 
