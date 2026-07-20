@@ -19,18 +19,19 @@ function setup() {
 function draw() {
     clear();
     stroke(0);
-    strokeWeight(1);
-    line(x0,0,x0,height);
-    line(0,y0,width,y0);
-    line(mouseX,0,mouseX,height);
-    line(0,mouseY,width,mouseY);
-
-    strokeWeight(5);
     if(mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+        strokeWeight(1);
+//        line(x0,0,x0,height);
+  //      line(0,y0,width,y0);
+        line(mouseX,0,mouseX,height);
+        line(0,mouseY,width,mouseY);
+        strokeWeight(5);
+
         thetaX = map(mouseX,0,width,-Math.PI,Math.PI);
         thetaY = map(mouseY,0,height,-Math.PI,Math.PI);
         
     }
+    strokeWeight(5);
     
     thetaX = Math.round(thetaX / (2*Math.PI / 64)) * (2*Math.PI /64);
     thetaY = Math.round(thetaY / (2*Math.PI / 64)) * (2*Math.PI /64);
